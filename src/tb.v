@@ -10,8 +10,8 @@ module tb (
     // testbench is controlled by test.py
     input BB_SYSTEM_CLOCK_50,
     input BB_SYSTEM_RESET_inHigh,
-    input BB_SYSTEM_clear_InLow
-    input BB_SYSTEM_load_InLow
+    input BB_SYSTEM_clear_InLow,
+    input BB_SYSTEM_load_InLow,
     output [7:0] BB_SYSTEM_data_OutBUS
    );
 
