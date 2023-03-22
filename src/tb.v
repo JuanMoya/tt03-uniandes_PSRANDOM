@@ -8,9 +8,11 @@ that can be driven / tested by the cocotb test.py
 
 module tb (
     // testbench is controlled by test.py
-    input clk,
-    input rst,
-    output [6:0] segments
+    input BB_SYSTEM_CLOCK_50,
+    input BB_SYSTEM_RESET_inHigh,
+    input BB_SYSTEM_clear_InLow
+    input BB_SYSTEM_load_InLow
+    output [7:0] BB_SYSTEM_data_OutBUS
    );
 
     // this part dumps the trace to a vcd file that can be viewed with GTKWave
@@ -21,16 +23,16 @@ module tb (
     end
 
     // wire up the inputs and outputs
-    wire [7:0] inputs = {6'b0, rst, clk};
+    wire [7:0] inputs = {4'b0, BB_SYSTEM_load_InLow, BB_SYSTEM_clear_InLow, BB_SYSTEM_RESET_inHigh, BB_SYSTEM_CLOCK_50};
     wire [7:0] outputs;
-    assign segments = outputs[6:0];
+    assign BB_SYSTEM_data_OutBUS = outputs[7:0];
 
     // instantiate the DUT
-    seven_segment_seconds seven_segment_seconds(
-        `ifdef GL_TEST
-            .vccd1( 1'b1),
-            .vssd1( 1'b0),
-        `endif
+    BB_SYSTEM BB_SYSTEM(
+//        `ifdef GL_TEST
+//            .vccd1( 1'b1),
+//            .vssd1( 1'b0),
+//       `endif
         .io_in  (inputs),
         .io_out (outputs)
         );
