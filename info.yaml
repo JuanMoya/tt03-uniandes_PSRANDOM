@@ -46,14 +46,14 @@ documentation:
     - none
 # A description of what the outputs do
   outputs:
-    - BB_SYSTEM_data_OutBUS_0
-    - BB_SYSTEM_data_OutBUS_1
-    - BB_SYSTEM_data_OutBUS_2
-    - BB_SYSTEM_data_OutBUS_3
-    - BB_SYSTEM_data_OutBUS_4
-    - BB_SYSTEM_data_OutBUS_5
-    - BB_SYSTEM_data_OutBUS_6
-    - BB_SYSTEM_data_OutBUS_7
+    - BB_SYSTEM_data_OutBUS[0]
+    - BB_SYSTEM_data_OutBUS[1]
+    - BB_SYSTEM_data_OutBUS[2]
+    - BB_SYSTEM_data_OutBUS[3]
+    - BB_SYSTEM_data_OutBUS[4]
+    - BB_SYSTEM_data_OutBUS[5]
+    - BB_SYSTEM_data_OutBUS[6]
+    - BB_SYSTEM_data_OutBUS[7]
 
 # The following fields are optional
   tag:          "PRNG, test"      # comma separated list of tags: test encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
