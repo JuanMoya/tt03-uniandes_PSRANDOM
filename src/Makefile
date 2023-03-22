@@ -27,10 +27,10 @@ VERILOG_SOURCES +=  $(PWD)/BB_SYSTEM.v $(PWD)/SC_DEBOUNCE1.v $(PWD)/SC_PSRANDOM.
 endif
 
 # TOPLEVEL is the name of the toplevel module in your Verilog or VHDL file
-TOPLEVEL = BB_SYSTEM
+TOPLEVEL = tb
 
 # MODULE is the basename of the Python test file
-MODULE = BB_SYSTEM
+MODULE = test
 
 # include cocotb's make rules to take care of the simulator setup
 include $(shell cocotb-config --makefiles)/Makefile.sim
