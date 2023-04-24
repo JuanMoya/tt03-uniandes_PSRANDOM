@@ -472,32 +472,50 @@ endmodule
 	
 /////// Ring Oscillator ///////
 
-module inv_with_delay(
-	input A, 
-	output Y
-);
+//module inv_with_delay(
+//	input A, 
+//	output Y
+//);
 
-`ifdef COCOTB_SIM
-assign #0.02 Y=~A;
+//`ifdef COCOTB_SIM
+//assign #0.02 Y=~A;
 //assign #200 Y=~A;
-`else
-sky130_fd_sc_hd_inv_2 inv(.A(A),.Y(Y));
-`endif
+//`else
+//sky130_fd_sc_hd_inv_2 inv(.A(A),.Y(Y));
+//`endif
+//endmodule
+
+module not_cell (
+    input wire in,
+    output wire out
+    );
+
+    assign out = !in;
 endmodule
 
-module nand2_with_delay(
-	input A,
-	input B, 
-	output Y
-);
+//module nand2_with_delay(
+//	input A,
+//	input B, 
+//	output Y
+//);
 
-`ifdef COCOTB_SIM
-assign #0.05 Y=~(A & B);
+//`ifdef COCOTB_SIM
+//assign #0.05 Y=~(A & B);
 //assign #500 Y=~(A & B);
-`else
-sky130_fd_sc_hd_nand2_2 inv(.A(A),.B(B),.Y(Y));
-`endif
+//`else
+//sky130_fd_sc_hd_nand2_2 inv(.A(A),.B(B),.Y(Y));
+//`endif
+//endmodule
+
+module nand_cell (
+    input wire a,
+    input wire b,
+    output wire out
+    );
+
+    assign out = !(a&b);
 endmodule
+
 
 module ring_osc(
 
@@ -525,13 +543,17 @@ localparam NUM_INVERTERS = 150;
 
 
 wire [NUM_INVERTERS-1:0] delay_in, delay_out;
-//wire out;
-inv_with_delay idelay [NUM_INVERTERS-1:0](
-	.A(delay_in),
-	.Y(delay_out)
+wire out;
+//inv_with_delay idelay [NUM_INVERTERS-1:0](
+//	.A(delay_in),
+//	.Y(delay_out)
+not_cell idelay [NUM_INVERTERS-1:0](
+	.in(delay_in),
+	.out(delay_out)
 );
 assign delay_in = {delay_out[NUM_INVERTERS-2:0],out};
-nand2_with_delay nand2_with_delay(.A(en), .B(delay_out[NUM_INVERTERS-1]), .Y(out));
+//nand2_with_delay nand2_with_delay(.A(en), .B(delay_out[NUM_INVERTERS-1]), .Y(out));
+	nand_cell nand_delay(.a(en), .b(delay_out[NUM_INVERTERS-1]), .Y(out));
 //reg out;
 
 /*assign io_out[0] = out;
