@@ -553,7 +553,7 @@ not_cell idelay [NUM_INVERTERS-1:0](
 );
 assign delay_in = {delay_out[NUM_INVERTERS-2:0],out};
 //nand2_with_delay nand2_with_delay(.A(en), .B(delay_out[NUM_INVERTERS-1]), .Y(out));
-	nand_cell nand_delay(.a(en), .b(delay_out[NUM_INVERTERS-1]), .Y(out));
+	nand_cell nand_delay(.a(en), .b(delay_out[NUM_INVERTERS-1]), .out(out));
 //reg out;
 
 /*assign io_out[0] = out;
