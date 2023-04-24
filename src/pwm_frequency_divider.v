@@ -538,8 +538,8 @@ output wire out2;
 output wire out3;
 
 
-//localparam NUM_INVERTERS = 150;
-localparam NUM_INVERTERS = 20;
+localparam NUM_INVERTERS = 150;
+//localparam NUM_INVERTERS = 20;
 
 
 wire [NUM_INVERTERS-1:0] delay_in, delay_out;
@@ -572,12 +572,12 @@ assign out3 = temp_ro3;
 //assign out_set = temp_set;
 
 
-//assign temp_ro0 =delay_out[120];
-//assign temp_ro1 =delay_out[80];
-//assign temp_ro2 =delay_out[40];
-assign temp_ro0 =delay_out[18];
-assign temp_ro1 =delay_out[14];
-assign temp_ro2 =delay_out[10];
+assign temp_ro0 =delay_out[120];
+assign temp_ro1 =delay_out[80];
+assign temp_ro2 =delay_out[40];
+//assign temp_ro0 =delay_out[18];
+//assign temp_ro1 =delay_out[14];
+//assign temp_ro2 =delay_out[10];
 //assign temp_ro3 =delay_out[NUM_INVERTERS-1];
 assign temp_ro3 =delay_out[7];
 //assign temp_set = delay_out[3];
