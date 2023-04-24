@@ -36,9 +36,20 @@ documentation:
     - rst
     - sel<0>
     - sel<1>
+    - none
+    - none
+    - none
+    - none
 # A description of what the outputs do
   outputs:
-    - out_pwm[0]
+    - out_pwm
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
 
 # The following fields are optional
   tag:          "PRNG, test"      # comma separated list of tags: test encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
