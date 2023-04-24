@@ -6,12 +6,8 @@ project:
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
   source_files:        
-    - BB_SYSTEM.v
-    - SC_DEBOUNCE1.v
-    - SC_PSRANDOM.v
-    - SC_RegGENERAL.v
-    - SC_STATEMACHINE.v
-  top_module:  "BB_SYSTEM"      # put the name of your top module here, make it unique by prepending your github username
+    - pwm_frequency_divider.v
+  top_module:  "divisor_frec_ro_ff_d"      # put the name of your top module here, make it unique by prepending your github username
 
 # Keep a track of the submission yaml
 yaml_version: 3.0
@@ -24,7 +20,7 @@ documentation:
   author:       "Juan Sebastian Moya"
   title:        "PRNG"
   language:     "Verilog"
-  description:  "Pseudo Random number generator with reset and enable."
+  description:  "Pseudo Random number generator and frequency divider with reset and enable."
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -36,24 +32,13 @@ documentation:
 
 # A description of what the inputs do
   inputs:               
-    - BB_SYSTEM_CLOCK_50
-    - BB_SYSTEM_RESET_inHigh
-    - BB_SYSTEM_clear_InLow
-    - BB_SYSTEM_load_InLow
-    - none
-    - none
-    - none
-    - none
+    - en
+    - rst
+    - sel<0>
+    - sel<1>
 # A description of what the outputs do
   outputs:
-    - BB_SYSTEM_data_OutBUS[0]
-    - BB_SYSTEM_data_OutBUS[1]
-    - BB_SYSTEM_data_OutBUS[2]
-    - BB_SYSTEM_data_OutBUS[3]
-    - BB_SYSTEM_data_OutBUS[4]
-    - BB_SYSTEM_data_OutBUS[5]
-    - BB_SYSTEM_data_OutBUS[6]
-    - BB_SYSTEM_data_OutBUS[7]
+    - out_pwm[0]
 
 # The following fields are optional
   tag:          "PRNG, test"      # comma separated list of tags: test encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
